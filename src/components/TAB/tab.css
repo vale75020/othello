@@ -1,0 +1,14 @@
+#tab-wrapper {
+    display: flex;
+    height: 80%;
+}
+
+#tab{
+    align-self: center; 
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(8, 80px);
+    margin: 0 auto;
+    border: 10px solid black
+}
