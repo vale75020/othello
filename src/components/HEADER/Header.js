@@ -7,9 +7,9 @@ class Header extends Component {
             <div>
                 
                 <div className="players">
-                    <div className="player-one">PLAYER 1</div>
+                    <div className="player-black">PLAYER 1</div>
                     <h1>REVERSI</h1>
-                    <div className="player-two">PLAYER 2</div>
+                    <div className="player-white">PLAYER 2</div>
                 </div>
             </div>
         );

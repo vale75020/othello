@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
-import Cellule from '../CELLULE/Cellule'
+import Cell from '../CELLULE/Cell'
 import './tab.css'
 
 class Tab extends Component {
     state = {
-        damier: [
+        board: [
             ['','','','','','','',''],
             ['','','','','','','',''],
             ['','','','','','','',''],
-            ['','','','x','y','','',''],
-            ['','','','y','x','','',''],
+            ['','','','white','black','','',''],
+            ['','','','black','white','','',''],
             ['','','','','','','',''],
             ['','','','','','','',''],
             ['','','','','','','','']
-        ]
+        ],
+        round: 'black'
     }
 
+    handlePlay= (indexRow, indexCell) => {
+        
+    }
 
     render() {
         return (
             <div id="tab-wrapper">
                 <div id="tab">
-                    {this.state.damier.map(ligne => ligne.map((cellule, index) => <Cellule key= {index} value={cellule} />))}
+                    {this.state.board.map((row, indexRow) => row.map((cell, indexCell) => <Cell key={indexRow+'-'+indexCell} value={cell} handlePlay={this.state.handlePlay} />))}
                 </div>
             </div>
         );

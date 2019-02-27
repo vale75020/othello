@@ -4,6 +4,8 @@ button {
     height: 40px;
     margin: 20px;
     font-size: 20px;
+    background-color: grey;
+    color: white
 }
 
 .footer {

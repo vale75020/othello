@@ -5,15 +5,15 @@
     display: flex;
 }
 
-.noir {
+.black {
     background-color: black;
 }
 
-.blanc {
+.white {
     background-color: white;
 }
 
-.pion {
+.disk {
     height: 60px;
     width: 60px;
     border-radius: 100%;
