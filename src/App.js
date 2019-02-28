@@ -31,11 +31,31 @@ class App extends Component {
 			this.reset();
 		}
 
-		canPlay = (indexRow, indexCell) => {
-			return this.possibleDisksToFlip(indexRow, indexCell).length > 0;
+		getBestPossiblePlay = () => {
+			let bestPossiblePlay = [];
+			let nbFlippableDisks = 0;
+			let maxFlippableDisks = 0;
+
+			for (let i = 0; i < 7; i++) {
+				for (let j = 0; j < 7; j++) {
+					if (this.canPlay(i,j)) { 
+						nbFlippableDisks = this.getPossibleDisksToFlip.length;
+						if (nbFlippableDisks > maxFlippableDisks) {
+							maxFlippableDisks = nbFlippableDisks;
+							bestPossiblePlay = [i,j];
+						}
+					}
+				}
+			}
+			return bestPossiblePlay;
 		}
 
-		possibleDisksToFlip = (indexRow, indexCell) => {
+
+		canPlay = (indexRow, indexCell) => {
+			return this.getPossibleDisksToFlip(indexRow, indexCell).length > 0;
+		}
+
+		getPossibleDisksToFlip = (indexRow, indexCell) => {
 			const possibleDisksToFlip = [];
 			if (this.state.board[indexRow][indexCell] === '') {
 
@@ -83,7 +103,7 @@ class App extends Component {
 				const board = [...this.state.board];
 
 				// we flip the concerned disks
-				this.possibleDisksToFlip(indexRow, indexCell).forEach(x => board[x[0]][x[1]] = this.state.whosTurn);
+				this.getPossibleDisksToFlip(indexRow, indexCell).forEach(x => board[x[0]][x[1]] = this.state.whosTurn);
 
 				// we place the disk on the board
 				board[indexRow][indexCell] = this.state.whosTurn;
@@ -95,7 +115,16 @@ class App extends Component {
 				// we set the new player turn
 				const whosTurn = this.state.whosTurn === 'black' ? 'white' : 'black';
 
-				this.setState({ board, whosTurn, scores, message: '' })
+
+				this.setState({ board, whosTurn, scores, message: '' }, () => {
+				
+					// AI mode - if player white is AI - we play for him
+					if (this.state.whosTurn === 'white') {
+						const bestPossiblePlay = this.getBestPossiblePlay();
+						this.handlePlay(bestPossiblePlay[0], bestPossiblePlay[1]);
+					}
+
+				})
 			} else {
 				this.setState({ message: 'You can\'t play here' });
 			}
