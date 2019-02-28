@@ -45,21 +45,29 @@ class Tab extends Component {
 					let i = 1;
 					let valueNext = '';
 
-					if (indexRow+i*coord[0] >= 0 && indexRow+i*coord[0] <= 7 && indexCell+i*coord[1] >= 0 && indexCell+i*coord[1] <= 7) {
+					// we check if the next coordinates are on board
+					while (indexRow+i*coord[0] >= 0 && indexRow+i*coord[0] <= 7 && indexCell+i*coord[1] >= 0 && indexCell+i*coord[1] <= 7) {
 						valueNext = this.state.board[indexRow+i*coord[0]][indexCell+i*coord[1]];
 
-						while (valueNext && valueNext !== this.state.whosTurn) {
-							candidateDisksToFlip.push([indexRow+i*coord[0], indexCell+i*coord[1]])
-							i++
-							if (indexRow+i*coord[0] >= 0 && indexRow+i*coord[0] <= 7 && indexCell+i*coord[1] >= 0 && indexCell+i*coord[1] <= 7) {
-								valueNext = this.state.board[indexRow+i*coord[0]][indexCell+i*coord[1]];
-							} else {
-								valueNext = '';
-							}
-						}
+						// if it's the case, we check if next is a disk of the same color - in that case it is not possible to flip any disk in that direction
+						if (i === 1 && valueNext === this.state.whosTurn) {
+							break;
 
-						if (valueNext && valueNext === this.state.whosTurn) {
-							candidateDisksToFlip.forEach(x => possibleDisksToFlip.push(x))
+						} else {
+							// otherwise if there is a disk, and not of the same color, it is a candidate for flipping
+							if (valueNext && valueNext !== this.state.whosTurn) {
+								candidateDisksToFlip.push([indexRow+i*coord[0], indexCell+i*coord[1]])
+								i++;
+
+							// if there is a disk - of the same color this time, then we the disks are definitely flippable and we can stop looking in that direction
+							} else if (valueNext && valueNext === this.state.whosTurn) {
+								candidateDisksToFlip.forEach(x => possibleDisksToFlip.push(x))
+								break;
+
+							// else there is no disk there, meaning no disk to flip - we can stop here
+							} else {
+								break;
+							}
 						}
 					}
 				})
