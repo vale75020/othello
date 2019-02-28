@@ -47,17 +47,6 @@ class Tab extends Component {
 
 					if (indexRow+i*coord[0] >= 0 && indexRow+i*coord[0] <= 7 && indexCell+i*coord[1] >= 0 && indexCell+i*coord[1] <= 7) {
 						valueNext = this.state.board[indexRow+i*coord[0]][indexCell+i*coord[1]];
-					}
-
-					if (valueNext && valueNext !== this.state.whosTurn) {
-						candidateDisksToFlip.push([indexRow+i*coord[0], indexCell+i*coord[1]])
-						i++;
-
-						if (indexRow+i*coord[0] >= 0 && indexRow+i*coord[0] <= 7 && indexCell+i*coord[1] >= 0 && indexCell+i*coord[1] <= 7) {
-							valueNext = this.state.board[indexRow+i*coord[0]][indexCell+i*coord[1]];
-						} else {
-							valueNext = '';
-						}
 
 						while (valueNext && valueNext !== this.state.whosTurn) {
 							candidateDisksToFlip.push([indexRow+i*coord[0], indexCell+i*coord[1]])
