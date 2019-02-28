@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import "./header.css"
 
 class Header extends Component {
+    displayDivPlayer = (color) => {
+        return <div className={this.props.whosTurn === color ? 'player-' + color + ' active':'player-' + color + ' inactive'}>PLAYER {color.toUpperCase()} ({this.props.scores[color]})</div>
+    }
+
     render() {
         return (
             <div>
-                
                 <div className="players">
-                    <div className={this.props.whosTurn === 'black' ? 'player-black active':'player-black inactive'}>PLAYER BLACK ({this.props.scores['black']})</div>
+                    {this.displayDivPlayer('black')}
                     <h1>REVERSI</h1>
-                    <div className={this.props.whosTurn === 'white' ? 'player-white active' : 'player-white inactive'}>PLAYER WHITE ({this.props.scores['white']})</div>
+                    {this.displayDivPlayer('white')}
                 </div>
             </div>
         );
