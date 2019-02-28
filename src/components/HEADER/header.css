@@ -6,7 +6,7 @@
     font-size: 20px;
     text-align: center;
     line-height: 50px;
-
+    box-shadow: 3px 3px 15px #333
 }
 
 .player-black {
@@ -17,6 +17,7 @@
     font-size: 20px;
     text-align: center;
     line-height: 50px;
+    box-shadow: 3px 3px 15px #333
 }
 
 .active {

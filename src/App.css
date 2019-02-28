@@ -1,8 +1,27 @@
 #App {
   margin: 0;
-  height: 100vh;
+  height: 100%;
 }
 
+#message {
+	margin: 5px;
+	height: 35px;
+	text-align: center;
+}
 
+#tab-wrapper {
+		display: flex;
+		height: 80%;
+}
+
+#tab {
+    align-self: center; 
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(8, 80px);
+    margin: 0 auto;
+    border: 10px solid black
+}
 
 

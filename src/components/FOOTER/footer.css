@@ -5,7 +5,8 @@ button {
     margin: 20px;
     font-size: 20px;
     background-color: grey;
-    color: white
+    color: white;
+    box-shadow: 3px 3px 15px #333
 }
 
 .footer {
