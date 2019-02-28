@@ -5,7 +5,7 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                <button>RESET</button>
+                <button onClick={this.props.reset}>RESET</button>
             </div>
         );
     }

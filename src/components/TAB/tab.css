@@ -1,9 +1,15 @@
-	#tab-wrapper {
-			display: flex;
-			height: 80%;
+#message {
+	margin: 5px;
+	height: 35px;
+	text-align: center;
 }
 
-#tab{
+#tab-wrapper {
+		display: flex;
+		height: 80%;
+}
+
+#tab {
     align-self: center; 
     justify-content: center;
     align-items: center;

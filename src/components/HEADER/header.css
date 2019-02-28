@@ -19,6 +19,15 @@
     line-height: 50px;
 }
 
+.active {
+	border: 2px solid red;
+}
+
+.inactive {
+	border: 2px solid transparent;
+}
+
+
 .players {
     display: flex;
     justify-content: space-around;
